@@ -1,0 +1,10 @@
+[Unit]
+Description=Stop gpu overheating
+
+[Service]
+ExecStart=/bin/sh -c "/usr/bin/echo 500 > /sys/class/drm/card0/gt_boost_freq_mhz && /usr/bin/intel_gpu_frequency -c max=900MHZ min=300MHZ"
+ExecStop=/bin/sh -c "/usr/bin/echo 1050 > /sys/class/drm/card0/gt_boost_freq_mhz && /usr/bin/intel_gpu_frequency --defaults"
+RemainAfterExit=yes
+
+[Install]
+WantedBy=sysinit.target

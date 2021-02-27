@@ -1,0 +1,10 @@
+[Unit]
+Description=Disable thunderbolt
+
+[Service]
+ExecStart=/bin/sh -c "/usr/bin/modprobe -r thunderbolt; echo auto > /sys/bus/pci/devices/0000:07:00.0/power/control"
+ExecStop=/bin/sh -c "/usr/bin/modprobe thunderbolt; echo on > /sys/bus/pci/devices/0000:07:00.0/power/control"
+RemainAfterExit=yes
+
+[Install]
+WantedBy=sysinit.target

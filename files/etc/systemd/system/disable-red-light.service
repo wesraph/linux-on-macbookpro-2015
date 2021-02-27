@@ -1,0 +1,7 @@
+[Unit]
+Description=Disable red light
+[Service]
+ExecStart=/usr/bin/amixer -D hw:0 set 'IEC958',1 mute; /usr/bin/amixer -D hw:0 set 'IEC958',2 mute
+
+[Install]
+WantedBy=multi-user.target

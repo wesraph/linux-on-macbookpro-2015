@@ -1,0 +1,10 @@
+[Unit]
+Description=Set pcieaspm to powersave
+
+[Service]
+ExecStart=/bin/sh -c "echo powersave | tee /sys/module/pcie_aspm/parameters/policy"
+ExecStop=/bin/sh -c "echo default | tee /sys/module/pcie_aspm/parameters/policy"
+RemainAfterExit=yes
+
+[Install]
+WantedBy=sysinit.target

@@ -1,0 +1,9 @@
+[Service]
+User=root
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=sh -c "echo XHC1 > /proc/acpi/wakeup" && sh -c "echo ARPT > /proc/acpi/wakeup"
+ExecStop=true 
+
+[Install]
+WantedBy=multi-user.target
